@@ -1,0 +1,52 @@
+body {
+    font-family: Calibri, sans-serif;
+    background-color: #ADD8E6; /* baby blue */
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    padding: 20px;
+    border: 5px solid #00008B; /* dark blue border */
+    background-color: #fff;
+    max-width: 600px;
+    width: 100%;
+}
+
+.main-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+form {
+    margin-top: 20px;
+}
+
+label {
+    font-size: 1.2em;
+}
+
+input[type="text"] {
+    padding: 10px;
+    font-size: 1em;
+    margin: 10px 0;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #00008B;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #000060;
+}
