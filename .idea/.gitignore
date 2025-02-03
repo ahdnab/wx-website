@@ -2,8 +2,11 @@
 /shelf/
 /workspace.xml
 
+
 AppData/
 *.log
 *.tmp
 .env
+venv/
+
 
