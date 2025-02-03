@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AeroForecast</title>
+</head>
+<body style="background: linear-gradient(135deg, #f3e6f5, #e6e6fa); text-align: center; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: black; height: 100vh; display: flex; align-items: center; justify-content: center; border: 10px solid #d8bfd8; transition: background-color 0.5s ease;">
+    <div style="text-align: center; padding: 20px; background-color: #e6e6fa; border-radius: 12px; border: 2px solid #d8bfd8; box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); transition: box-shadow 0.5s ease, transform 0.5s ease;">
+        <h1 style="font-size: 2.5em; margin-bottom: 20px; color: black; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); font-weight: bold;">AeroForecast</h1>
+        <form action="/weather" method="post" style="display: flex; align-items: center; justify-content: center; gap: 5px;">
+            <label for="location" style="font-size: 1.2em; margin-right: 5px; color: #333; font-weight: semi-bold;">Location:</label>
+            <input type="text" id="location" name="location" required placeholder="City name or IATA code" style="font-size: 1em; padding: 8px; width: 180px; border-radius: 5px; border: 1px solid #d8bfd8;">
+            <button type="submit" style="font-size: 1em; padding: 8px 15px; border: none; border-radius: 5px; background-color: black; color: white; cursor: pointer;">Enter</button>
+        </form>
+    </div>
+</body>
+</html>
