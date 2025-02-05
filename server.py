@@ -12,7 +12,7 @@ def fetch_weather(api_key, location):
         response = requests.get(url)
         response.raise_for_status()
 
-        # Debug information (optional)
+        # Debug information to check the status code and response
         print(f"Status Code: {response.status_code}")
         print(f"Response Text: {response.text}")
 
