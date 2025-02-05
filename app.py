@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import requests
+import os
 
 app = Flask(__name__)
 
@@ -81,4 +82,5 @@ def weather():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    port = int(os.environ.get('PORT', 5000))  # Use Render's PORT environment variable
+    app.run(debug=True, host='0.0.0.0', port=port)  # Bind to 0.0.0.0
