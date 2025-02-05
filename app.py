@@ -12,14 +12,9 @@ def fetch_weather(api_key, location):
         response = requests.get(url)
         response.raise_for_status()
 
-        # Debug information (optional)
-        print(f"Status Code: {response.status_code}")
-        print(f"Response Text: {response.text}")
-
         if response.status_code == 200:
             weather_data = response.json().get('data', [{}])[0]
 
-            # Extracting weather details...
             description = weather_data.get('weather', {}).get('description', 'N/A')
             temperature = weather_data.get('temp', 'N/A')
             feels_like = weather_data.get('app_temp', 'N/A')
@@ -36,8 +31,6 @@ def fetch_weather(api_key, location):
             uv_index = weather_data.get('uv', 'N/A')
             precipitation_mm = weather_data.get('precip', 0)
             precipitation = "None" if precipitation_mm == 0 else f"{precipitation_mm} mm"
-
-            # Additional details (optional)
             sunrise = weather_data.get('sunrise', 'N/A')
             sunset = weather_data.get('sunset', 'N/A')
             weather_icon = weather_data.get('weather', {}).get('icon', '')
