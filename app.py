@@ -5,23 +5,17 @@ app = Flask(__name__)
 
 API_KEY = '46b4681891584da3b66a4dae2d11748b'
 
+
 def fetch_weather(api_key, location):
-    # API URL with debugging logs
     url = f'https://api.weatherbit.io/v2.0/current?key={api_key}&units=M&city={location}'
-    print(f"API URL: {url}")  # Debug: Print the API URL
 
     try:
         response = requests.get(url)
-        print(f"API Response Status: {response.status_code}")  # Debug: Print status code
-        print(f"API Response Text: {response.text}")  # Debug: Print raw response
-
-        response.raise_for_status()  # Check for HTTP errors
+        response.raise_for_status()
 
         if response.status_code == 200:
             weather_data = response.json().get('data', [{}])[0]
-            print(f"Weather Data: {weather_data}")  # Debug: Print weather data
 
-            # Extract weather data (your existing code)
             description = weather_data.get('weather', {}).get('description', 'N/A')
             temperature = weather_data.get('temp', 'N/A')
             feels_like = weather_data.get('app_temp', 'N/A')
@@ -42,7 +36,7 @@ def fetch_weather(api_key, location):
             sunset = weather_data.get('sunset', 'N/A')
             weather_icon = weather_data.get('weather', {}).get('icon', '')
 
-            weather_info = {
+            return {
                 'description': description,
                 'temperature': temperature,
                 'feels_like': feels_like,
@@ -59,18 +53,16 @@ def fetch_weather(api_key, location):
                 'sunset': sunset,
                 'weather_icon': weather_icon
             }
-
-            return weather_info
         else:
-            print(f"API Error: {response.status_code} - {response.text}")
             return None
-    except requests.exceptions.RequestException as e:
-        print(f"Request failed: {e}")
+    except requests.exceptions.RequestException:
         return None
+
 
 @app.route('/')
 def index():
     return render_template('index.html')
+
 
 @app.route('/weather', methods=['POST'])
 def weather():
@@ -79,11 +71,9 @@ def weather():
         return "Error: Location not provided.", 400
 
     weather_info = fetch_weather(API_KEY, location)
+    return render_template('weather.html', weather_info=weather_info,
+                           location=location) if weather_info else "Error: Unable to fetch weather data.", 500
 
-    if weather_info:
-        return render_template('weather.html', weather_info=weather_info, location=location)
-    else:
-        return "Error: Unable to fetch weather data. Check the location or API key.", 500
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)

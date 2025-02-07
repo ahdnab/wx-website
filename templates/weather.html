@@ -1,89 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather Info - AeroForecast</title>
-    <style>
-        body {
-            background-color: #f3e6f5;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: black;
-        }
-        table {
-            width: 100%;
-            height: 100%;
-            border-collapse: collapse;
-        }
-        td {
-            vertical-align: middle;
-        }
-        .weather-table {
-            width: 500px;
-            background-color: #e6e6fa;
-            border-radius: 15px;
-            border: 4px solid #d8bfd8;
-            margin: 0 auto;
-            padding: 20px;
-
-        }
-        h1 {
-            font-size: 2em;
-            margin-bottom: 15px;
-            color: #333;
-        }
-        .weather-icon {
-            width: 80px;
-            height: 80px;
-        }
-        .weather-details {
-            text-align: center;
-            margin: 15px 0;
-        }
-        .back-button {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: black;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            margin-top: 20px;
-        }
-    </style>
+  <title>Weather Info</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background: #f0f4f8; }
+    .container { max-width: 600px; margin: 0 auto; }
+    h1, h2 { text-align: center; color: #2c3e50; }
+    .weather-card { background: white; padding: 20px; margin: 20px 0; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    .weather-item { padding: 10px 0; border-bottom: 1px solid #eee; }
+    .weather-item:last-child { border-bottom: none; }
+    .weather-icon { display: block; margin: 0 auto; width: 100px; }
+    @media (max-width: 480px) { h1 { font-size: 24px; } .weather-card { padding: 15px; } }
+  </style>
 </head>
 <body>
-    <table>
-        <tr>
-            <td>
-                <table class="weather-table">
-                    <tr>
-                        <td>
-                            <h1>Weather in {{ location }}</h1>
-                            {% if weather_info.weather_icon %}
-                                <img src="https://www.weatherbit.io/static/img/icons/{{ weather_info.weather_icon }}.png" alt="Weather Icon" class="weather-icon">
-                            {% endif %}
-                            <div class="weather-details">
-                                <p><b>Description:</b> {{ weather_info.description }}</p>
-                                <p><b>Temperature:</b> {{ weather_info.temperature }}°C</p>
-                                <p><b>Feels Like:</b> {{ weather_info.feels_like }}°C</p>
-                                <p><b>Humidity:</b> {{ weather_info.humidity }}%</p>
-                                <p><b>Wind Speed:</b> {{ weather_info.wind_speed_knots }} knots</p>
-                                <p><b>Wind Gust:</b> {{ weather_info.wind_gust_knots }} knots</p>
-                                <p><b>Wind Direction:</b> {{ weather_info.wind_dir }}°</p>
-                                <p><b>Cloud Coverage:</b> {{ weather_info.clouds }}%</p>
-                                <p><b>Visibility:</b> {{ weather_info.visibility }} meters</p>
-                                <p><b>Precipitation:</b> {{ weather_info.precipitation }}</p>
-                                <p><b>UV Index:</b> {{ weather_info.uv_index }}</p>
-                            </div>
-                            <a href="/" class="back-button">Back to Home</a>
-                        </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-    </table>
+  <div class="container">
+    <h1>Weather in {{ location }}</h1>
+    <div class="weather-card">
+      <h2>{{ weather_info.description }}</h2>
+      <img class="weather-icon" src="https://www.weatherbit.io/static/img/icons/{{ weather_info.weather_icon }}.png" alt="Weather Icon">
+      <div class="weather-item">🌡 Temperature: {{ weather_info.temperature }}°C</div>
+      <div class="weather-item">💨 Feels Like: {{ weather_info.feels_like }}°C</div>
+      <div class="weather-item">💧 Humidity: {{ weather_info.humidity }}%</div>
+      <div class="weather-item">👁 Visibility: {{ weather_info.visibility }}m</div>
+      <div class="weather-item">🌬 Wind: {{ weather_info.wind_speed_knots }} knots ({{ weather_info.wind_dir }}°)</div>
+      <div class="weather-item">☁ Clouds: {{ weather_info.clouds }}%</div>
+      <div class="weather-item">☂ Precipitation: {{ weather_info.precipitation }}</div>
+    </div>
+  </div>
 </body>
 </html>
