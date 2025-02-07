@@ -36,7 +36,7 @@
             border: 4px solid #d8bfd8;
             margin: 0 auto;
             padding: 20px;
-            text-align: center;
+            text-align: left; /* Left-align content */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
@@ -45,6 +45,7 @@
             font-size: 2em;
             margin-bottom: 20px;
             color: #333;
+            text-align: center; /* Center the heading */
         }
 
         /* Weather icon styling */
@@ -52,12 +53,16 @@
             width: 80px;
             height: 80px;
             margin: 10px 0;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         /* Weather details */
         .weather-details p {
             margin: 8px 0;
             font-size: 1.1em;
+            text-align: left; /* Left-align text */
         }
 
         /* Back button styling */
@@ -70,6 +75,8 @@
             border-radius: 8px;
             margin-top: 20px;
             transition: background-color 0.3s ease;
+            text-align: center; /* Center the button */
+            width: 100%; /* Full width */
         }
 
         .back-button:hover {
@@ -109,9 +116,9 @@
                             <!-- Weather details with emojis -->
                             <div class="weather-details">
                                 <p>🌡 <b>Temperature:</b> {{ weather_info.temperature }}°C</p>
-                                <p>💨 <b>Feels Like:</b> {{ weather_info.feels_like }}°C</p>
+                                <p>★ <b>Feels Like:</b> {{ weather_info.feels_like }}°C</p> <!-- Updated emoji -->
                                 <p>💧 <b>Humidity:</b> {{ weather_info.humidity }}%</p>
-                                <p>🌬 <b>Wind Speed:</b> {{ weather_info.wind_speed_knots }} knots</p>
+                                <p>ᯓ <b>Wind Speed:</b> {{ weather_info.wind_speed_knots }} knots</p>
                                 <p>💨 <b>Wind Gust:</b> {{ weather_info.wind_gust_knots }} knots</p>
                                 <p>🧭 <b>Wind Direction:</b> {{ weather_info.wind_dir }}°</p>
                                 <p>☁ <b>Cloud Coverage:</b> {{ weather_info.clouds }}%</p>
