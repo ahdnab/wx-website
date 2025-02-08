@@ -71,8 +71,10 @@ def weather():
         return "Error: Location not provided.", 400
 
     weather_info = fetch_weather(API_KEY, location)
-    return render_template('weather.html', weather_info=weather_info,
-                           location=location) if weather_info else "Error: Unable to fetch weather data.", 500
+    if weather_info:
+        return render_template('weather.html', weather_info=weather_info, location=location)
+    else:
+        return "Error: Location not found. Please enter a valid city name", 404
 
 
 if __name__ == '__main__':
