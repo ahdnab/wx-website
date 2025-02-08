@@ -73,15 +73,12 @@ def weather():
     if not location:
         return "Error: Please enter a location name.", 400
 
-    # Check if the input is likely a country (e.g., "France", "USA")
-    if len(location.split()) == 1 and location[0].isupper():
-        return "Error: No weather data found for countries. Please enter a city name.", 404
-
     weather_info = fetch_weather(API_KEY, location)
+
     if weather_info:
         return render_template('weather.html', weather_info=weather_info, location=location)
     else:
-        return "Error: No weather data found for this location. Please check the spelling.", 404
+        return "Error: No weather data found. Please enter a valid city name or airport code.", 404
 
 
 if __name__ == '__main__':
