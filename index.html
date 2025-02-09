@@ -26,7 +26,7 @@
       font-size: 2.5em;
     }
     form {
-      background: #e0f7fa; /* Light shade of blue */
+      background: white;
       padding: 20px;
       border-radius: 10px;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -51,45 +51,9 @@
     @media (max-width: 480px) {
       h1 { font-size: 24px; }
     }
-    /* Dark/Light Mode Button */
-    .mode-toggle {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: #3498db;
-      color: white;
-      border: none;
-      padding: 10px;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 16px;
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-    .dark-mode {
-      background: #2c3e50;
-      color: #f0f4f8;
-    }
-    .dark-mode h1 {
-      color: white; /* Ensure heading is visible in dark mode */
-    }
-    .dark-mode form {
-      background: #34495e;
-      color: #f0f4f8;
-    }
-    .dark-mode input, .dark-mode button {
-      background: #2c3e50;
-      color: #f0f4f8;
-      border-color: #34495e;
-    }
   </style>
 </head>
 <body>
-  <button class="mode-toggle" onclick="toggleMode()">🌓</button>
   <div class="container">
     <h1>✈ AeroForecast</h1>
     <form action="/weather" method="POST">
@@ -97,10 +61,5 @@
       <button type="submit">Get Weather</button>
     </form>
   </div>
-  <script>
-    function toggleMode() {
-      document.body.classList.toggle('dark-mode');
-    }
-  </script>
 </body>
 </html>
