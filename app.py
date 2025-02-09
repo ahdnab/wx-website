@@ -78,7 +78,7 @@ def weather():
     if weather_info:
         return render_template('weather.html', weather_info=weather_info, location=location)
     else:
-        return "Error: No weather data found. Please enter a valid city name or airport code.", 404
+        return "Error: No weather data found. Please enter a valid city name.", 404
 
 
 if __name__ == '__main__':
