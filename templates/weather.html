@@ -5,17 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     * { box-sizing: border-box; }
-    body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background: #d0e7f0; /* Slightly darker blue */ }
+    body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background: #2c3e50; color: #f0f4f8; }
     .container { max-width: 600px; margin: 0 auto; }
-    h1, h2 { text-align: center; color: #2c3e50; }
-    .weather-card { background: #e0f7fa; /* Light shade of blue */ padding: 20px; margin: 20px 0; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-    .weather-item { padding: 10px 0; border-bottom: 1px solid #eee; }
+    h1, h2 { text-align: center; color: white; }
+    .weather-card { background: #34495e; padding: 20px; margin: 20px 0; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); color: #f0f4f8; }
+    .weather-item { padding: 10px 0; border-bottom: 1px solid #555; }
     .weather-item:last-child { border-bottom: none; }
     .weather-icon { display: block; margin: 0 auto; width: 100px; }
     .back-button {
       display: inline-block;
       padding: 10px 20px;
-      background-color: black;
+      background-color: #444;
       color: white;
       text-decoration: none;
       border-radius: 5px;
@@ -23,46 +23,12 @@
       transition: background-color 0.3s ease;
     }
     .back-button:hover {
-      background-color: #444;
+      background-color: #666;
     }
     @media (max-width: 480px) { h1 { font-size: 24px; } .weather-card { padding: 15px; } }
-    /* Dark/Light Mode Button */
-    .mode-toggle {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: #3498db;
-      color: white;
-      border: none;
-      padding: 10px;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 16px;
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-    .dark-mode {
-      background: #2c3e50;
-      color: #f0f4f8;
-    }
-    .dark-mode h1, .dark-mode h2 {
-      color: white; /* Ensure headings are visible in dark mode */
-    }
-    .dark-mode .weather-card {
-      background: #34495e;
-      color: #f0f4f8;
-    }
-    .dark-mode .back-button {
-      background-color: #444;
-    }
   </style>
 </head>
 <body>
-  <button class="mode-toggle" onclick="toggleMode()">🌓</button>
   <div class="container">
     <h1>Weather in {{ location }}</h1>
     <div class="weather-card">
@@ -79,15 +45,9 @@
       <div class="weather-item">☂ Precipitation: {{ weather_info.precipitation }}</div>
       <div class="weather-item">☀ UV Index: {{ weather_info.uv_index }}</div>
     </div>
-    <!-- Back button -->
     <div class="back-button-container" style="text-align: center;">
       <a href="/" class="back-button">Back to Home</a>
     </div>
   </div>
-  <script>
-    function toggleMode() {
-      document.body.classList.toggle('dark-mode');
-    }
-  </script>
 </body>
 </html>
